@@ -1,4 +1,4 @@
-import 'package:auto_complate_text_field/serchBarWirdgets.dart';
+import 'package:auto_complate_text_field/searchBarWidget.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -35,9 +35,9 @@ class _AutoCompleteTextFieldState extends State<AutoCompleteTextField> {
     Continent(name: 'Asia', size: 44579000),
     Continent(name: 'Asia', size: 44579000),
     Continent(name: 'Australia', size: 8600000),
-    Continent(name: 'Aurope', size: 10180000),
-    Continent(name: 'Aorth America', size: 24709000),
-    Continent(name: 'Aouth America', size: 17840000),
+    Continent(name: 'Europe', size: 10180000),
+    Continent(name: 'North America', size: 24709000),
+    Continent(name: 'South America', size: 17840000),
   ];
   List continent = [];
   List<Continent> _foundUsers = [];
