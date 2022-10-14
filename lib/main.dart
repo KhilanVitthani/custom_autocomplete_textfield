@@ -29,15 +29,15 @@ class AutoCompleteTextField extends StatefulWidget {
 class _AutoCompleteTextFieldState extends State<AutoCompleteTextField> {
   bool isChanged = false;
   List<Continent> continentOptions = <Continent>[
-    Continent(name: 'africa', size: 30370000),
-    Continent(name: 'antarctica', size: 14000000),
-    Continent(name: 'asia', size: 44579000),
-    Continent(name: 'asia', size: 44579000),
-    Continent(name: 'asia', size: 44579000),
-    Continent(name: 'australia', size: 8600000),
-    Continent(name: 'aurope', size: 10180000),
-    Continent(name: 'aorth America', size: 24709000),
-    Continent(name: 'aouth America', size: 17840000),
+    Continent(name: 'Africa', size: 30370000),
+    Continent(name: 'Antarctica', size: 14000000),
+    Continent(name: 'Asia', size: 44579000),
+    Continent(name: 'Asia', size: 44579000),
+    Continent(name: 'Asia', size: 44579000),
+    Continent(name: 'Australia', size: 8600000),
+    Continent(name: 'Aurope', size: 10180000),
+    Continent(name: 'Aorth America', size: 24709000),
+    Continent(name: 'Aouth America', size: 17840000),
   ];
   List continent = [];
   List<Continent> _foundUsers = [];
