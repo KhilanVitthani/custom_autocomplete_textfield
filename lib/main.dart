@@ -128,9 +128,4 @@ class Continent {
 
   final String name;
   final int size;
-
-  @override
-  String toString() {
-    return '$name ($size)';
-  }
 }
