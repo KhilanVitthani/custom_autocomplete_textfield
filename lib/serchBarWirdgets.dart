@@ -80,7 +80,7 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
           "https://e0.365dm.com/22/06/2048x1152/skysports-erling-haaland-man-city_5803257.jpg",
     },
   ];
-
+  TextEditingController userController = TextEditingController();
   // This list holds the data for the list view
   List<Map<String, dynamic>> _foundUsers = [];
   @override
@@ -149,6 +149,7 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
               height: 20,
             ),
             TextField(
+              controller: userController,
               onChanged: (value) => _runFilter(value),
               decoration: InputDecoration(
                 contentPadding:

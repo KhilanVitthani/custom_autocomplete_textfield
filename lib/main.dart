@@ -12,6 +12,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: AutoCompleteTextField(),
       // home: SearchBarScreen(),
     );
@@ -77,57 +78,32 @@ class _AutoCompleteTextFieldState extends State<AutoCompleteTextField> {
             child: Column(
               children: [
                 //  AutoCompleteExample(),
-                (continent.isNotEmpty)
+                (_foundUsers.isNotEmpty)
                     ? Column(
-                        children: List.generate(continent.length, (index) {
+                        children: List.generate(_foundUsers.length, (index) {
                         return ListTile(
-                          title: Text(continent[index]),
-                          onTap: () {
-                            setState(() {
-                              serchController.text = continent[index];
-                              continent.clear();
-                            });
-                          },
+                          title: Text(_foundUsers[index].name),
                         );
                       }))
                     : SizedBox(),
 
                 TextField(
                   controller: serchController,
-                  onChanged: (val) {
-                    if (val.isNotEmpty) {
-                      setState(() {
-                        isChanged = true;
-                      });
-                      continent.clear();
-                      continentOptions.forEach((element) {
-                        if (element.name[0] == val.toLowerCase()) {
-                          continent.add(element.name.toString());
-                          print(continent);
-                        }
-                        if (element.name.substring(0, 2) == val.toLowerCase()) {
-                          // continent.clear();
-                          continent.add(element.name.toString());
-                          print(continent);
-                        }
-                        if (element.name.substring(0, 3) == val.toLowerCase()) {
-                          // continent.clear();
-                          continent.add(element.name.toString());
-                          print(continent);
-                        }
-                      });
-                      print(isChanged);
-                    } else {
-                      setState(() {
-                        continent.clear();
-                        isChanged = false;
-                      });
-                    }
-                  },
+                  onChanged: (val) => _runFilter(val),
                 ),
               ],
             ),
           ),
+        ),
+        floatingActionButton: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SearchBarScreen(),
+                ));
+          },
+          child: Text("Search Bar Widgets"),
         ),
       ),
     );
