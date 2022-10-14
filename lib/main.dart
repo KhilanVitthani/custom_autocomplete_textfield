@@ -40,7 +40,6 @@ class _AutoCompleteTextFieldState extends State<AutoCompleteTextField> {
     Continent(name: 'aouth America', size: 17840000),
   ];
   List continent = [];
-  TextEditingController serchController = TextEditingController();
   List<Continent> _foundUsers = [];
   @override
   initState() {
