@@ -121,23 +121,6 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            TextField(
-              onChanged: (value) => _runFilter(value),
-              decoration: InputDecoration(
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
-                hintText: "Search",
-                suffixIcon: const Icon(Icons.search),
-                // prefix: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  borderSide: const BorderSide(),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
             Expanded(
               child: _foundUsers.isNotEmpty
                   ? ListView.builder(
@@ -161,6 +144,23 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                       'No results found Please try with diffrent search',
                       style: TextStyle(fontSize: 24),
                     ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              onChanged: (value) => _runFilter(value),
+              decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+                hintText: "Search",
+                suffixIcon: const Icon(Icons.search),
+                // prefix: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                  borderSide: const BorderSide(),
+                ),
+              ),
             ),
           ],
         ),
