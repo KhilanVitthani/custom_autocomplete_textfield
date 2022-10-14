@@ -25,65 +25,67 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Woolha.com Flutter Tutorial',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Woolha.com Flutter Tutorial'),
-          backgroundColor: Colors.teal,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              //  AutoCompleteExample(),
-              (continent.isNotEmpty)
-                  ? Column(
-                      children: List.generate(continent.length, (index) {
-                      return ListTile(
-                        title: Text(continent[index]),
-                        onTap: () {
-                          setState(() {
-                            serchController.text = continent[index];
-                            continent.clear();
-                          });
-                        },
-                      );
-                    }))
-                  : SizedBox(),
+      home: SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  //  AutoCompleteExample(),
+                  (continent.isNotEmpty)
+                      ? Column(
+                          children: List.generate(continent.length, (index) {
+                          return ListTile(
+                            title: Text(continent[index]),
+                            onTap: () {
+                              setState(() {
+                                serchController.text = continent[index];
+                                continent.clear();
+                              });
+                            },
+                          );
+                        }))
+                      : SizedBox(),
 
-              TextField(
-                controller: serchController,
-                onChanged: (val) {
-                  if (val.isNotEmpty) {
-                    setState(() {
-                      isChanged = true;
-                    });
-                    continent.clear();
-                    continentOptions.forEach((element) {
-                      if (element.name[0] == val.toLowerCase()) {
-                        continent.add(element.name.toString());
-                        print(continent);
+                  TextField(
+                    controller: serchController,
+                    onChanged: (val) {
+                      if (val.isNotEmpty) {
+                        setState(() {
+                          isChanged = true;
+                        });
+                        continent.clear();
+                        continentOptions.forEach((element) {
+                          if (element.name[0] == val.toLowerCase()) {
+                            continent.add(element.name.toString());
+                            print(continent);
+                          }
+                          if (element.name.substring(0, 2) ==
+                              val.toLowerCase()) {
+                            // continent.clear();
+                            continent.add(element.name.toString());
+                            print(continent);
+                          }
+                          if (element.name.substring(0, 3) ==
+                              val.toLowerCase()) {
+                            // continent.clear();
+                            continent.add(element.name.toString());
+                            print(continent);
+                          }
+                        });
+                        print(isChanged);
+                      } else {
+                        setState(() {
+                          continent.clear();
+                          isChanged = false;
+                        });
                       }
-                      if (element.name.substring(0, 2) == val.toLowerCase()) {
-                        // continent.clear();
-                        continent.add(element.name.toString());
-                        print(continent);
-                      }
-                      if (element.name.substring(0, 3) == val.toLowerCase()) {
-                        // continent.clear();
-                        continent.add(element.name.toString());
-                        print(continent);
-                      }
-                    });
-                    print(isChanged);
-                  } else {
-                    setState(() {
-                      continent.clear();
-                      isChanged = false;
-                    });
-                  }
-                },
+                    },
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
