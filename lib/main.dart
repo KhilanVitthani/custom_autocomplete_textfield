@@ -91,19 +91,19 @@ class _AutoCompleteTextFieldState extends State<AutoCompleteTextField> {
                   controller: serchController,
                   onChanged: (val) => _runFilter(val),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchBarScreen(),
+                        ));
+                  },
+                  child: Text("Search Bar Widgets"),
+                ),
               ],
             ),
           ),
-        ),
-        floatingActionButton: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchBarScreen(),
-                ));
-          },
-          child: Text("Search Bar Widgets"),
         ),
       ),
     );
