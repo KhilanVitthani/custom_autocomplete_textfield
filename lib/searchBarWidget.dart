@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class SearchBarScreen extends StatefulWidget {
   const SearchBarScreen({Key? key}) : super(key: key);
@@ -8,6 +9,7 @@ class SearchBarScreen extends StatefulWidget {
 }
 
 class _SearchBarScreenState extends State<SearchBarScreen> {
+  GlobalKey slid = GlobalKey();
   final List<Map<String, dynamic>> _allUsers = [
     {
       "image":
@@ -128,15 +130,40 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                       itemBuilder: (context, index) => Card(
                         elevation: 1,
                         margin: const EdgeInsets.symmetric(vertical: 2),
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            radius: 30.0,
-                            backgroundImage:
-                                NetworkImage(_foundUsers[index]['image']),
-                            backgroundColor: Colors.transparent,
+                        child: Slidable(
+                          startActionPane: ActionPane(
+                            motion: ScrollMotion(),
+                            children: <Widget>[
+                              SlidableAction(
+                                onPressed: (context) {
+                                  setState(() {
+                                    _foundUsers.removeAt(index);
+                                  });
+                                },
+                                backgroundColor: Color(0xFFFE4A49),
+                                foregroundColor: Colors.white,
+                                icon: Icons.delete,
+                                label: 'Delete',
+                              ),
+                              SlidableAction(
+                                onPressed: (context) {},
+                                backgroundColor: Color(0xFF21B7CA),
+                                foregroundColor: Colors.white,
+                                icon: Icons.share,
+                                label: 'Share',
+                              ),
+                            ],
                           ),
-                          title: Text(_foundUsers[index]['name']),
-                          subtitle: Text('${_foundUsers[index]["des"]}'),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: 30.0,
+                              backgroundImage:
+                                  NetworkImage(_foundUsers[index]['image']),
+                              backgroundColor: Colors.transparent,
+                            ),
+                            title: Text(_foundUsers[index]['name']),
+                            subtitle: Text('${_foundUsers[index]["des"]}'),
+                          ),
                         ),
                       ),
                     )
